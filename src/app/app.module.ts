@@ -60,6 +60,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatIconModule,
     RouterModule.forRoot(appRoutes),
 
   ],
