@@ -29,9 +29,16 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.getCurrentUser();
     // this.getfavMovies()
     this.getFavs()
+  }
+
+  getCurrentUser(): void {
+    const username = localStorage.getItem('user');
+    this.fetchApiData.getUser(username).subscribe((resp: any) => {
+      this.user = resp
+    });
   }
 
   openSynopsis(title: string, imagePath: any, description: string): void {
@@ -72,12 +79,13 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       movies = res;
       movies.forEach((movie: any) => {
-        if (this.user.FavouriteMovies.includes(movie._id)) {
+        if (this.user.FavoriteMovies.includes(movie._id)) {
           this.favMovies.push(movie);
           this.displayElement = true;
         }
       });
 
+      console.log(this.favMovies)
     });
   }
 

@@ -23,7 +23,6 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getMovies();
-    this.getCurrentUser();
   }
 
   //Get all movies
@@ -62,18 +61,7 @@ export class MovieCardComponent {
     });
 
   }
-  getCurrentUser(): void {
-    const username = localStorage.getItem('user');
-    this.fetchApiData.getUser(username).subscribe((resp: any) => {
 
-      console.log(resp)
-      const currentUser = resp.Username
-      console.log(currentUser)
-      const currentFavs = resp.FavouriteMovies
-      console.log(currentFavs)
-
-    });
-  }
   addToUserFavs(id: string): void {
     console.log(id);
     const token = localStorage.getItem('token');
