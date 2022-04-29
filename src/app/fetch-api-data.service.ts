@@ -107,11 +107,12 @@ export class UserRegistrationService {
 
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
+
     return this.http.post(apiUrl + `users/${username}/movies/${id}`, {}, {
       headers: new HttpHeaders(
         {
-          Authorization: `Bearer + ${token}`,
-        })
+          Authorization: 'Bearer' + token,
+        }),
     }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)

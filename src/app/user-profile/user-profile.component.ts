@@ -78,6 +78,7 @@ export class UserProfileComponent implements OnInit {
     let movies: any[] = [];
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       movies = res;
+      console.log(this.user)
       movies.forEach((movie: any) => {
         if (this.user.FavoriteMovies.includes(movie._id)) {
           this.favMovies.push(movie);
